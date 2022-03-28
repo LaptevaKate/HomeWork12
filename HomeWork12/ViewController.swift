@@ -46,7 +46,6 @@ class ViewController: UIViewController {
             self.menuWidth.constant = 0
             self.view.layoutIfNeeded()
         }, completion: nil)
-       
     }
 
     
@@ -61,19 +60,16 @@ class ViewController: UIViewController {
             self.menuWidth.constant = 300
             self.view.layoutIfNeeded()
         }, completion: nil)
-
-        
-        
     }
     
     
     @IBAction func startGameButton(_ sender: Any) {
         presentPinAlert()
     }
-    
 }
 
 //MARK: - ViewController Extention
+
 extension ViewController {
     func presentPinAlert() {
         let alert = UIAlertController(title: "Pin Question", message: "How many days in a high year?", preferredStyle: .alert)
@@ -84,7 +80,7 @@ extension ViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
             guard let text = alert.textFields?.first?.text else { return }
             if text == self?.pin {
-                self?.presentAlert(text: "You are right. Let's start the game")
+                self?.presentAlert(text: "Great! Let's start the game")
             } else {
                 self?.presentAlert(text: "Refresh your knowledge and try again")
             }
