@@ -23,6 +23,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    @IBOutlet weak var userScoreLabel: UILabel!
+    
+    @IBOutlet weak var lastRecordLabel: UILabel!
+    
+    
+    
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
@@ -35,6 +44,11 @@ class ViewController: UIViewController {
         blurView.isUserInteractionEnabled = false
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userNameLabel.text = SaveUserSettings.shared.userName ?? "User Name"
     }
    
     //MARK: - Methods
@@ -66,6 +80,13 @@ class ViewController: UIViewController {
     @IBAction func startGameButton(_ sender: Any) {
         presentPinAlert()
     }
+    
+    @IBAction func settingTapped(_ sender: Any) {
+        let settingsViewController = self.storyboard?.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
+    
 }
 
 //MARK: - ViewController Extention
