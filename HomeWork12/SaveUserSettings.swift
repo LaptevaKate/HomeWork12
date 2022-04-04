@@ -6,20 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 enum SaveKeys: String {
-    case userName, mouseColor, obstruction, speed
+    case userName, mouseColor, obstruction, speed, userImage
 }
 
 class SaveUserSettings {
     private let defaults = UserDefaults.standard
     
-    class var shared: SaveUserSettings {
-        struct Static {
-            static let instance = SaveUserSettings()
-        }
-        return Static.instance
-    }
+    public static var shared = SaveUserSettings()
     
     var userName: String? {
         get {
@@ -32,7 +28,7 @@ class SaveUserSettings {
     
     var speed: String {
         get {
-            guard let value = defaults.string(forKey: SaveKeys.speed.rawValue) else { return ""}
+            guard let value = defaults.string(forKey: SaveKeys.speed.rawValue) else { return "" }
             return value
         }
         set {
@@ -42,7 +38,7 @@ class SaveUserSettings {
     
     var mouseColor: String {
         get {
-            guard let value = defaults.string(forKey: SaveKeys.mouseColor.rawValue) else { return ""}
+            guard let value = defaults.string(forKey: SaveKeys.mouseColor.rawValue) else { return "" }
             return value
         }
         set {
@@ -52,11 +48,24 @@ class SaveUserSettings {
     
     var obstruction: String {
         get {
-            guard let value = defaults.string(forKey: SaveKeys.obstruction.rawValue) else { return ""}
+            guard let value = defaults.string(forKey: SaveKeys.obstruction.rawValue) else { return "" }
             return value
         }
         set {
             defaults.setValue(newValue, forKey: SaveKeys.obstruction.rawValue)
+        }
+    }
+    
+    var userImage: UIImage? {
+        get {
+            guard let value = defaults.data(forKey: SaveKeys.userImage.rawValue) else { return nil }
+            let decoded = try! PropertyListDecoder().decode(Data.self, from: value)
+            return UIImage(data: decoded)
+        }
+        set {
+            guard let image = newValue, let value = image.jpegData(compressionQuality: 0.5) else { return }
+            let encoded = try! PropertyListEncoder().encode(value)
+            UserDefaults.standard.set(encoded, forKey: SaveKeys.userImage.rawValue)
         }
     }
 }

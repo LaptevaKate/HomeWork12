@@ -8,12 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-  
-    
-    
-    //MARK: - Properties
-   
-    private let pin = "366"
     
     //MARK: - @IBOutlet
     
@@ -31,26 +25,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var lastRecordLabel: UILabel!
     
     
+    @IBOutlet weak var userImage: UIImageView!
     
-    //MARK: - ViewDidLoad
+    //MARK: - Properties
+    
+    private let pin = "366"
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         menuWidth.constant = 0
         
         blurView.isHidden = true
+    
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissBlur))
         blurView.addGestureRecognizer(tapGesture)
         blurView.isUserInteractionEnabled = false
         
-        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        userImage.isUserInteractionEnabled = true
+        userImage.addGestureRecognizer(tapGestureRecognizer)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         userNameLabel.text = SaveUserSettings.shared.userName ?? "User Name"
+        userImage.image = SaveUserSettings.shared.userImage ?? UIImage(systemName: "person.circle")
     }
-   
     //MARK: - Methods
     
     @objc private func dismissBlur() {
@@ -61,16 +64,23 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-
     
-    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
     //MARK: - IBActions
     
     @IBAction func showMenuOptions(_ sender: Any) {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.blurView.isHidden = false
             self.blurView.isUserInteractionEnabled = true
-           
+            
             self.menuWidth.constant = 300
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -119,3 +129,18 @@ extension ViewController {
         self.present(alert, animated: true)
     }
 }
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        userImage.image = image
+        SaveUserSettings.shared.userImage = image
+        self.dismiss(animated: true, completion: nil)
+     
+        }
+    }
+

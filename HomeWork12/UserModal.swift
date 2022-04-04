@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum ObstructionType: String {
     case cat
@@ -14,19 +15,30 @@ enum ObstructionType: String {
     case owl
 }
 
-class UserModel {
+struct UserModel {
     
     
     let userName: String
     let mouseColor: String
     let speed: Int
     let obstruction: ObstructionType
-    
-    init(userName: String, mouseColor: String, speed: Int, obstruction: ObstructionType) {
-        self.userName = userName
-        self.mouseColor = mouseColor
-        self.speed = speed
-        self.obstruction = obstruction
+}
+
+extension UIColor {
+    static func fromString(_ colorString: String) -> UIColor{
+        switch colorString {
+        case "Green":
+            return UIColor.green
+        case "Red":
+            return UIColor.red
+        case "Yellow":
+            return UIColor.yellow
+        case "Blue":
+            return UIColor.blue
+        case "Black":
+            return UIColor.black
+        default:
+            return UIColor.clear
+        }
     }
-    
 }
