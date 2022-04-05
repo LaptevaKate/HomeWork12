@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         userImage.isUserInteractionEnabled = true
         userImage.addGestureRecognizer(tapGestureRecognizer)
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +54,7 @@ class ViewController: UIViewController {
         userNameLabel.text = SaveUserSettings.shared.userName ?? "User Name"
         userImage.image = SaveUserSettings.shared.userImage ?? UIImage(systemName: "person.circle")
     }
+    
     //MARK: - Methods
     
     @objc private func dismissBlur() {
@@ -67,13 +68,19 @@ class ViewController: UIViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Library",
+                                      style: .default,
+                                      handler: { [weak self] _ in
+            self?.openGallery()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: .cancel))
+        
+        present(alert, animated: true)
+        
     }
+    
     //MARK: - IBActions
     
     @IBAction func showMenuOptions(_ sender: Any) {
@@ -97,7 +104,18 @@ class ViewController: UIViewController {
     }
     
     
+
+    @IBAction func shareImageView(_ sender: UIButton) {
+        let image = UIImage(named: "avatorOne")
+        let imageShare = [ image!]
+        let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+     
+    }
+    
 }
+
 
 //MARK: - ViewController Extention
 
@@ -129,6 +147,7 @@ extension ViewController {
         self.present(alert, animated: true)
     }
 }
+
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -140,7 +159,21 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         userImage.image = image
         SaveUserSettings.shared.userImage = image
         self.dismiss(animated: true, completion: nil)
-     
+        }
+}
+
+private extension ViewController {
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Warning", message: "No permission", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
-
+}

@@ -92,14 +92,28 @@
                                                                 <rect key="frame" x="90" y="60.5" width="120" height="69"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYr-Nd-0S7">
+                                                                <rect key="frame" x="215" y="102" width="75" height="38"/>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Share Image">
+                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="shareImageView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CRJ-2k-e3Z"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.63921570780000003" green="0.60000002379999995" blue="0.78431367870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
+                                                            <constraint firstItem="ZYr-Nd-0S7" firstAttribute="leading" secondItem="tnw-JT-tHi" secondAttribute="trailing" constant="5" id="1rm-RN-uhW"/>
                                                             <constraint firstAttribute="bottom" secondItem="tnw-JT-tHi" secondAttribute="bottom" constant="20" id="ANt-Sh-N7V"/>
                                                             <constraint firstAttribute="height" constant="150" id="OBW-H8-i0M"/>
                                                             <constraint firstItem="tnw-JT-tHi" firstAttribute="leading" secondItem="tBj-4Y-lY9" secondAttribute="leading" constant="90" id="R0u-Cp-at1"/>
                                                             <constraint firstItem="tnw-JT-tHi" firstAttribute="top" secondItem="tBj-4Y-lY9" secondAttribute="top" constant="60" id="Srz-0Y-v6h"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ZYr-Nd-0S7" secondAttribute="bottom" constant="10" id="b28-vb-L2G"/>
                                                             <constraint firstAttribute="trailing" secondItem="tnw-JT-tHi" secondAttribute="trailing" constant="90" id="kLv-3P-1QR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ZYr-Nd-0S7" secondAttribute="trailing" constant="10" id="vGb-et-zWW"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynT-mf-Ix2">
