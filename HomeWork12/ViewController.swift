@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+
+    
     
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -26,6 +28,8 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var userImage: UIImageView!
+    
+    
     
     //MARK: - Properties
     
@@ -106,7 +110,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func shareImageView(_ sender: UIButton) {
-        let image = UIImage(named: "avatorOne")
+        let image = UIImage(named: "avatarOne")
         let imageShare = [ image!]
         let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
@@ -127,11 +131,12 @@ extension ViewController {
             textField.keyboardType = .decimalPad
         }
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            guard let text = alert.textFields?.first?.text else { return }
-            if text == self?.pin {
-                self?.presentAlert(text: "Great! Let's start the game")
+            guard let self = self, let text = alert.textFields?.first?.text else { return }
+            if text == self.pin {
+                let raceVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "raceVC") as! RacingViewController
+                self.navigationController?.pushViewController(raceVC, animated: true)
             } else {
-                self?.presentAlert(text: "Refresh your knowledge and try again")
+                self.presentAlert(text: "Refresh your knowledge and try again")
             }
         }
         let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)

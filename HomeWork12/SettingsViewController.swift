@@ -22,8 +22,8 @@ class SettingsViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let mouseColors = ["Green", "Red", "Yellow", "Blue", "Black"]
-    private let obstructionForMoving = ["Cat", "Dog", "Snake", "Owl"]
+    private let mouseColors = ["Green", "Red", "Black"]
+    private let obstructionForMoving = ["Cat", "Dog", "Owl"]
     private var mouseColorValue: String?
     private var obstructionValue: String?
     

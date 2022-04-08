@@ -11,7 +11,6 @@ import UIKit
 enum ObstructionType: String {
     case cat
     case dog
-    case snake
     case owl
 }
 
@@ -31,10 +30,6 @@ extension UIColor {
             return UIColor.green
         case "Red":
             return UIColor.red
-        case "Yellow":
-            return UIColor.yellow
-        case "Blue":
-            return UIColor.blue
         case "Black":
             return UIColor.black
         default:
