@@ -3,8 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -321,36 +323,48 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvD-vw-orc">
                                 <rect key="frame" x="20" y="64" width="374" height="693"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="OQd-vI-NzJ">
-                                        <rect key="frame" x="15" y="93" width="120" height="120"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OQd-vI-NzJ">
+                                        <rect key="frame" x="35" y="8" width="93.5" height="90"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="Z2c-3q-w8B"/>
-                                            <constraint firstAttribute="width" constant="120" id="czl-ey-OGX"/>
+                                            <constraint firstAttribute="width" secondItem="OQd-vI-NzJ" secondAttribute="height" multiplier="1:1" id="MQ8-So-tyn"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="2WP-cv-BTS">
-                                        <rect key="frame" x="220.5" y="93" width="120" height="120"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-ci-RSa">
+                                        <rect key="frame" x="140" y="8" width="93.5" height="90"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2WP-cv-BTS">
+                                        <rect key="frame" x="245.5" y="8" width="93.5" height="90"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="DlA-uV-A9p"/>
-                                            <constraint firstAttribute="width" constant="120" id="Qnx-gB-jOY"/>
+                                            <constraint firstAttribute="width" secondItem="2WP-cv-BTS" secondAttribute="height" multiplier="1:1" id="Ni5-Aq-nyW"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mouse" translatesAutoresizingMaskIntoConstraints="NO" id="evY-kM-0Xr">
-                                        <rect key="frame" x="137" y="573" width="100" height="100"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evY-kM-0Xr">
+                                        <rect key="frame" x="131" y="579" width="93.5" height="94.5"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="QIC-kn-hTq"/>
+                                            <constraint firstAttribute="width" secondItem="evY-kM-0Xr" secondAttribute="height" id="tkp-UB-T4t"/>
                                         </constraints>
+                                        <imageReference key="image" image="magicmouse" catalog="system" symbolScale="default"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.74901962280000001" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="evY-kM-0Xr" secondAttribute="trailing" constant="137" id="7Aa-Yr-iSe"/>
-                                    <constraint firstItem="evY-kM-0Xr" firstAttribute="leading" secondItem="NvD-vw-orc" secondAttribute="leading" constant="137" id="DxP-Ne-sfF"/>
-                                    <constraint firstAttribute="bottom" secondItem="OQd-vI-NzJ" secondAttribute="top" constant="600" id="OFi-6z-2v7"/>
+                                    <constraint firstItem="evY-kM-0Xr" firstAttribute="leading" secondItem="NvD-vw-orc" secondAttribute="leading" constant="131" id="HMh-y1-aMK"/>
+                                    <constraint firstItem="bUM-ci-RSa" firstAttribute="leading" secondItem="NvD-vw-orc" secondAttribute="leading" constant="140" id="HfZ-TB-7Ip"/>
+                                    <constraint firstAttribute="trailing" secondItem="2WP-cv-BTS" secondAttribute="trailing" constant="35" id="Iam-II-NHh"/>
+                                    <constraint firstItem="bUM-ci-RSa" firstAttribute="top" secondItem="NvD-vw-orc" secondAttribute="top" constant="5" id="Ldj-bp-ecZ"/>
+                                    <constraint firstItem="OQd-vI-NzJ" firstAttribute="top" secondItem="NvD-vw-orc" secondAttribute="top" constant="5" id="N5H-LC-6dG"/>
+                                    <constraint firstItem="bUM-ci-RSa" firstAttribute="width" secondItem="bUM-ci-RSa" secondAttribute="height" id="QhL-dc-7Za"/>
+                                    <constraint firstItem="evY-kM-0Xr" firstAttribute="width" secondItem="NvD-vw-orc" secondAttribute="width" multiplier="0.25" id="b5E-5U-5NL"/>
                                     <constraint firstAttribute="bottom" secondItem="evY-kM-0Xr" secondAttribute="bottom" constant="20" id="bZo-83-McU"/>
-                                    <constraint firstItem="OQd-vI-NzJ" firstAttribute="centerX" secondItem="NvD-vw-orc" secondAttribute="centerX" multiplier="0.4" id="lE0-vY-rrE"/>
-                                    <constraint firstAttribute="bottom" secondItem="2WP-cv-BTS" secondAttribute="top" constant="600" id="www-s0-ZVt"/>
-                                    <constraint firstItem="2WP-cv-BTS" firstAttribute="centerX" secondItem="NvD-vw-orc" secondAttribute="centerX" multiplier="1.5" id="xnI-Aa-tb1"/>
+                                    <constraint firstItem="2WP-cv-BTS" firstAttribute="top" secondItem="NvD-vw-orc" secondAttribute="top" constant="5" id="cVS-UP-6ei"/>
+                                    <constraint firstItem="OQd-vI-NzJ" firstAttribute="width" secondItem="NvD-vw-orc" secondAttribute="width" multiplier="0.25" id="lmC-7h-tvU"/>
+                                    <constraint firstItem="bUM-ci-RSa" firstAttribute="width" secondItem="NvD-vw-orc" secondAttribute="width" multiplier="0.25" id="oeW-Aq-xuH"/>
+                                    <constraint firstItem="OQd-vI-NzJ" firstAttribute="leading" secondItem="NvD-vw-orc" secondAttribute="leading" constant="35" id="oxi-er-2m7"/>
+                                    <constraint firstItem="2WP-cv-BTS" firstAttribute="width" secondItem="NvD-vw-orc" secondAttribute="width" multiplier="0.25" id="tFL-AI-AA0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -368,12 +382,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="wBX-C5-r5T"/>
                     <connections>
-                        <outlet property="bottomLeftImageViewConstraint" destination="OFi-6z-2v7" id="10c-sQ-JVZ"/>
-                        <outlet property="bottomRightImageViewConstraint" destination="www-s0-ZVt" id="yoX-KD-Ws1"/>
+                        <outlet property="centerImageViewTopConstraint" destination="Ldj-bp-ecZ" id="PjE-kB-2Bt"/>
+                        <outlet property="centerSideObstructionImageView" destination="bUM-ci-RSa" id="0uI-Gc-N2d"/>
                         <outlet property="leftButton" destination="JXb-CP-t7b" id="g5V-2n-rQA"/>
+                        <outlet property="leftImageViewTopConstraint" destination="N5H-LC-6dG" id="YFf-AR-Ag3"/>
                         <outlet property="leftSideObstructionImageView" destination="OQd-vI-NzJ" id="MdE-OZ-hde"/>
                         <outlet property="mouseImageView" destination="evY-kM-0Xr" id="GUl-rP-ygh"/>
+                        <outlet property="mouseLeadingConstraint" destination="HMh-y1-aMK" id="GtH-vf-z3Z"/>
                         <outlet property="rightButton" destination="mC6-zD-dxE" id="cDF-A3-XFm"/>
+                        <outlet property="rightImageViewTopConstrainr" destination="cVS-UP-6ei" id="vqe-bo-54u"/>
                         <outlet property="rightSideObstructionImageView" destination="2WP-cv-BTS" id="FDH-2H-vlZ"/>
                         <outlet property="viewForNavigationButtons" destination="O6w-r6-D5E" id="1G6-cT-nf0"/>
                         <outlet property="viewMainScreenRacing" destination="NvD-vw-orc" id="9eQ-Zq-p16"/>
@@ -386,13 +403,31 @@
         <!--Game Over View Controller-->
         <scene sceneID="VfZ-Bx-isn">
             <objects>
-                <viewController id="BZ9-IC-LHr" customClass="GameOverViewController" customModule="HomeWork12" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameOver" id="BZ9-IC-LHr" customClass="GameOverViewController" customModule="HomeWork12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XD3-cV-7DH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHV-4L-OZm">
+                                <rect key="frame" x="83" y="420.5" width="248.5" height="55"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pjK-4E-Dti"/>
                         <color key="backgroundColor" red="0.63921570780000003" green="0.60000002379999995" blue="0.78431367870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="DHV-4L-OZm" firstAttribute="centerX" secondItem="XD3-cV-7DH" secondAttribute="centerX" id="dDs-kn-5o8"/>
+                            <constraint firstItem="DHV-4L-OZm" firstAttribute="centerY" secondItem="XD3-cV-7DH" secondAttribute="centerY" id="hgs-FJ-qdU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameOverLabel" destination="DHV-4L-OZm" id="opU-iT-J7k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2P-3Y-pcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -491,7 +526,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgJ-0G-Yrx">
                                                 <rect key="frame" x="0.0" y="418" width="374" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the speed  from 0 to 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lb-mp-cBf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose speed:60,90,120 m/m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lb-mp-cBf">
                                                         <rect key="frame" x="20" y="10" width="334" height="24"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -559,6 +594,7 @@
                         <outlet property="mouseColorPickerView" destination="r2D-PU-RLD" id="0kq-W2-Xrp"/>
                         <outlet property="mouseSpeed" destination="WQc-fn-IFV" id="Ihx-Ci-pO5"/>
                         <outlet property="obstructionPickerView" destination="Zw3-Dl-DZB" id="M7R-7m-oXz"/>
+                        <outlet property="scrollView" destination="Eck-40-DYW" id="Y59-Vm-9vf"/>
                         <outlet property="userNameTextField" destination="NRr-Ky-1Zb" id="rcp-YH-0sv"/>
                     </connections>
                 </viewController>
@@ -569,13 +605,15 @@
     </scenes>
     <resources>
         <image name="Logo" width="1017" height="771"/>
-        <image name="dog" width="600" height="600"/>
+        <image name="magicmouse" catalog="system" width="88" height="128"/>
         <image name="menuImage" width="62" height="73"/>
-        <image name="mouse" width="129" height="128"/>
-        <image name="owl" width="600" height="600"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="tortoise" catalog="system" width="128" height="68"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

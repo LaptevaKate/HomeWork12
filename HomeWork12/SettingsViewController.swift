@@ -20,9 +20,11 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var mouseSpeed: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     //MARK: - Properties
     
-    private let mouseColors = ["Green", "Red", "Black"]
+    private let mouseColors = ["Green", "Red", "Blue", "Black"]
     private let obstructionForMoving = ["Cat", "Dog", "Owl"]
     private var mouseColorValue: String?
     private var obstructionValue: String?
@@ -44,6 +46,7 @@ class SettingsViewController: UIViewController {
         
         setupSettings()
         
+        registerKeybordNotification()
         
     }
     
@@ -127,4 +130,28 @@ extension SettingsViewController:  UIPickerViewDelegate, UIPickerViewDataSource 
             obstructionValue = obstructionForMoving[row]
         }
     }
+}
+//MARK: - UITextFieldDelegate
+extension SettingsViewController: UITextFieldDelegate {
+    private func registerKeybordNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeybord(_:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeybord(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        @objc func willShowKeybord(_ nofication: NSNotification) {
+            guard let info = nofication.userInfo,
+                  let keybordSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+            let insets = UIEdgeInsets(top: 0, left: 0, bottom: keybordSize.height, right: 0)
+            scrollView.contentInset = insets
+            scrollView.scrollIndicatorInsets = insets
+        }
+        
+        @objc func willHideKeybord(_ nofication: NSNotification) {
+            guard let info = nofication.userInfo,
+                  let _ = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+            let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+            scrollView.contentInset = insets
+            scrollView.scrollIndicatorInsets = insets
+        }
 }

@@ -15,25 +15,10 @@ enum ObstructionType: String {
 }
 
 struct UserModel {
-    
-    
     let userName: String
     let mouseColor: String
     let speed: Int
     let obstruction: ObstructionType
 }
 
-extension UIColor {
-    static func fromString(_ colorString: String) -> UIColor{
-        switch colorString {
-        case "Green":
-            return UIColor.green
-        case "Red":
-            return UIColor.red
-        case "Black":
-            return UIColor.black
-        default:
-            return UIColor.clear
-        }
-    }
-}
+
