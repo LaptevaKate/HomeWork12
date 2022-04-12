@@ -342,12 +342,12 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evY-kM-0Xr">
-                                        <rect key="frame" x="131" y="579" width="93.5" height="94.5"/>
+                                        <rect key="frame" x="131" y="579.5" width="93.5" height="93.5"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="evY-kM-0Xr" secondAttribute="height" id="tkp-UB-T4t"/>
                                         </constraints>
-                                        <imageReference key="image" image="magicmouse" catalog="system" symbolScale="default"/>
+                                        <imageReference key="image" image="mouseImage" symbolScale="default"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.74901962280000001" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -605,8 +605,8 @@
     </scenes>
     <resources>
         <image name="Logo" width="1017" height="771"/>
-        <image name="magicmouse" catalog="system" width="88" height="128"/>
         <image name="menuImage" width="62" height="73"/>
+        <image name="mouseImage" width="510" height="593"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="tortoise" catalog="system" width="128" height="68"/>
         <namedColor name="AccentColor">
