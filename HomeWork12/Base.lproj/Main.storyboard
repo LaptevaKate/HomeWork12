@@ -327,7 +327,7 @@
                                         <rect key="frame" x="35" y="8" width="93.5" height="90"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="OQd-vI-NzJ" secondAttribute="height" multiplier="1:1" id="MQ8-So-tyn"/>
+                                            <constraint firstAttribute="width" secondItem="OQd-vI-NzJ" secondAttribute="height" id="MQ8-So-tyn"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-ci-RSa">
@@ -338,7 +338,7 @@
                                         <rect key="frame" x="245.5" y="8" width="93.5" height="90"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="2WP-cv-BTS" secondAttribute="height" multiplier="1:1" id="Ni5-Aq-nyW"/>
+                                            <constraint firstAttribute="width" secondItem="2WP-cv-BTS" secondAttribute="height" id="Ni5-Aq-nyW"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evY-kM-0Xr">

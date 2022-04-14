@@ -50,9 +50,9 @@ class RacingViewController: UIViewController {
         
         selectColorToMouseImageView(mouseColor: SaveUserSettings.shared.mouseColor)
         
-        leftSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction)
-        rightSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction)
-        centerSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction)
+        leftSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction) ?? UIImage(named: "cat")
+        rightSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction) ?? UIImage(named: "dog")
+        centerSideObstructionImageView.image = selectKindOfObstruction(obstruction: SaveUserSettings.shared.obstruction) ?? UIImage(named: "owl")
         
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
@@ -73,7 +73,7 @@ class RacingViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 0)
+        moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 90)
         setMouseImagePosition(to: .center)
         
     }
@@ -105,7 +105,7 @@ class RacingViewController: UIViewController {
         case "Black":
             return mouseImageView.tintColor = UIColor.black
         default:
-            return mouseImageView.tintColor = UIColor.clear
+            return mouseImageView.tintColor = UIColor.white
         }
 }
     func selectKindOfObstruction(obstruction: String) -> UIImage? {
@@ -192,41 +192,26 @@ class RacingViewController: UIViewController {
     
     
     func moveDownForObstructions(mouseSpeed: Double) {
-        UIView.animate(withDuration: 1 / mouseSpeed, delay: 0, options: [.curveEaseInOut], animations: {[weak self] in
-            guard let self = self else { return }
-            if !(self.viewMainScreenRacing.bounds.contains(self.leftSideObstructionImageView.frame)) {
-                self.leftImageViewTopConstraint.constant = 5
-            } else {
-                self.leftImageViewTopConstraint.constant += 20
-            }
+        guard self.viewMainScreenRacing.bounds.contains(self.leftSideObstructionImageView.frame) || self.leftImageViewTopConstraint.constant < 0 else {
+            self.leftImageViewTopConstraint.constant = -150
+            self.centerImageViewTopConstraint.constant = -150
+            self.rightImageViewTopConstrainr.constant = -150
             self.view.layoutIfNeeded()
-        }, completion: nil)
-        UIView.animate(withDuration: 1 / mouseSpeed, delay: 0.5, options: [.allowAnimatedContent], animations: { [weak self] in
-            guard let self = self else { return }
-            if !(self.viewMainScreenRacing.bounds.contains(self.centerSideObstructionImageView.frame)) {
-                self.centerImageViewTopConstraint.constant = 5
-            } else {
-                self.centerImageViewTopConstraint.constant += 60
-            }
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        UIView.animate(withDuration: 1 / mouseSpeed, delay: 1, options: [.allowAnimatedContent], animations: { [weak self] in
-            guard let self = self else { return }
-            if !(self.viewMainScreenRacing.bounds.contains(self.rightSideObstructionImageView.frame)) {
-                self.rightImageViewTopConstrainr.constant = 5
-            } else {
-                self.rightImageViewTopConstrainr.constant += 40
-            }
-            self.view.layoutIfNeeded()
-        }) {[weak self] _ in
-            self?.repeatAnimation(mouseSpeed: mouseSpeed)
+            return self.repeatAnimation(mouseSpeed: mouseSpeed)
         }
+        UIView.animate(withDuration: 25 / mouseSpeed, delay: 0, options: [.curveLinear], animations: { [weak self] in
+            guard let self = self else { return }
+            self.leftImageViewTopConstraint.constant += 30
+            self.centerImageViewTopConstraint.constant += 60
+            self.rightImageViewTopConstrainr.constant += 50
+            self.view.layoutIfNeeded()
+        }, completion: {[weak self] _ in
+            self?.repeatAnimation(mouseSpeed: mouseSpeed)
+        })
     }
 
     func repeatAnimation(mouseSpeed: Double) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
-            self?.moveDownForObstructions(mouseSpeed: mouseSpeed)
-        })
+        moveDownForObstructions(mouseSpeed: mouseSpeed)
     }
     
 
