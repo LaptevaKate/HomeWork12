@@ -18,6 +18,8 @@
 		5E7C087727EE553700C39816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7C087527EE553700C39816 /* LaunchScreen.storyboard */; };
 		5E8C7DF127FEB6FC007DD5F0 /* RacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */; };
 		5E904F88280041E200C19565 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E904F87280041E200C19565 /* GameOverViewController.swift */; };
+		5EF6488F280D766A00F7BED3 /* RecordGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF6488E280D766A00F7BED3 /* RecordGame.swift */; };
+		5EF64893280D7C3800F7BED3 /* RecordOfGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF64892280D7C3800F7BED3 /* RecordOfGamesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		5E7C087827EE553700C39816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingViewController.swift; sourceTree = "<group>"; };
 		5E904F87280041E200C19565 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		5EF6488E280D766A00F7BED3 /* RecordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGame.swift; sourceTree = "<group>"; };
+		5EF64892280D7C3800F7BED3 /* RecordOfGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOfGamesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,14 @@
 			children = (
 				5E7C086A27EE553400C39816 /* AppDelegate.swift */,
 				5E7C086C27EE553400C39816 /* SceneDelegate.swift */,
-				5E7C086E27EE553400C39816 /* ViewController.swift */,
-				5E904F87280041E200C19565 /* GameOverViewController.swift */,
-				5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */,
-				5E75F86327F5ADC400DDFC39 /* SettingsViewController.swift */,
 				5E75F86527F5D01400DDFC39 /* UserModal.swift */,
 				5E75F86727F5E3BC00DDFC39 /* SaveUserSettings.swift */,
+				5E7C086E27EE553400C39816 /* ViewController.swift */,
+				5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */,
+				5E75F86327F5ADC400DDFC39 /* SettingsViewController.swift */,
+				5E904F87280041E200C19565 /* GameOverViewController.swift */,
+				5EF64892280D7C3800F7BED3 /* RecordOfGamesViewController.swift */,
+				5EF6488E280D766A00F7BED3 /* RecordGame.swift */,
 				5E7C087027EE553400C39816 /* Main.storyboard */,
 				5E7C087327EE553700C39816 /* Assets.xcassets */,
 				5E7C087527EE553700C39816 /* LaunchScreen.storyboard */,
@@ -153,7 +159,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF64893280D7C3800F7BED3 /* RecordOfGamesViewController.swift in Sources */,
 				5E75F86827F5E3BC00DDFC39 /* SaveUserSettings.swift in Sources */,
+				5EF6488F280D766A00F7BED3 /* RecordGame.swift in Sources */,
 				5E7C086F27EE553400C39816 /* ViewController.swift in Sources */,
 				5E75F86627F5D01400DDFC39 /* UserModal.swift in Sources */,
 				5E7C086B27EE553400C39816 /* AppDelegate.swift in Sources */,

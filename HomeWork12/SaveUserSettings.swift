@@ -17,6 +17,8 @@ class SaveUserSettings {
     
     public static var shared = SaveUserSettings()
     
+    var usersScores: [String: RecordGame] = [:]
+    
     var userName: String? {
         get {
             return defaults.string(forKey: SaveKeys.userName.rawValue)
@@ -67,6 +69,23 @@ class SaveUserSettings {
             let encoded = try! PropertyListEncoder().encode(value)
             UserDefaults.standard.set(encoded, forKey: SaveKeys.userImage.rawValue)
         }
+    }
+    
+    func record(recordGame: RecordGame) {
+        let user = userName ?? "Unknown user"
+        let value = try? PropertyListEncoder().encode(recordGame)
+        defaults.set(value, forKey: user)
+        usersScores[user] = recordGame
+    }
+    
+    func fillUsersScores() {
+        for (key, _) in defaults.dictionaryRepresentation() {
+            if let data = defaults.value(forKey: key) as? Data,
+               let value = try? PropertyListDecoder().decode(RecordGame.self, from: data) {
+                usersScores[key] = value
+            }
+        }
+        print(usersScores)
     }
 }
 

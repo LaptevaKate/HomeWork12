@@ -10,7 +10,6 @@ import UIKit
 class RacingViewController: UIViewController {
 
     //MARK: - @IBOutlet
-    
     @IBOutlet weak var mouseLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var leftImageViewTopConstraint: NSLayoutConstraint!
@@ -19,7 +18,6 @@ class RacingViewController: UIViewController {
     
     @IBOutlet weak var viewForNavigationButtons: UIView!
     @IBOutlet weak var viewMainScreenRacing: UIView!
-    
     
     @IBOutlet weak var leftSideObstructionImageView: UIImageView!
     @IBOutlet weak var rightSideObstructionImageView: UIImageView!
@@ -30,7 +28,6 @@ class RacingViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     
     //MARK: - Properties
-    
     private enum Place {
         case left
         case center
@@ -38,8 +35,9 @@ class RacingViewController: UIViewController {
     }
     
     private var position: Place = .center
-    
-    
+    private let userName: String = SaveUserSettings.shared.userName ?? "Unknown user"
+    private var userScore = 0
+
     //MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +66,13 @@ class RacingViewController: UIViewController {
                 self.showGameOverVC()
             }
         }
+   
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 90)
         setMouseImagePosition(to: .center)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,6 +87,15 @@ class RacingViewController: UIViewController {
         
         viewMainScreenRacing.layer.cornerRadius = 20
         viewMainScreenRacing.layer.masksToBounds = true
+    }
+    
+    private func countUserScore() {
+       userScore += 1
+    }
+    
+    private func saveLastUserRecord() {
+        let record = RecordGame(userName: userName, userScore: userScore, date: Date())
+        SaveUserSettings.shared.record(recordGame: record)
     }
 
     func selectColorToMouseImageView(mouseColor: String) {
@@ -107,7 +113,7 @@ class RacingViewController: UIViewController {
         default:
             return mouseImageView.tintColor = UIColor.white
         }
-}
+    }
     func selectKindOfObstruction(obstruction: String) -> UIImage? {
       
        switch obstruction {
@@ -122,7 +128,6 @@ class RacingViewController: UIViewController {
        }
     }
     
-  
     private func setMouseImagePosition(to position: Place) {
         let width = mouseImageView.frame.width
         
@@ -190,12 +195,12 @@ class RacingViewController: UIViewController {
         }
     }
     
-    
     func moveDownForObstructions(mouseSpeed: Double) {
         guard self.viewMainScreenRacing.bounds.contains(self.leftSideObstructionImageView.frame) || self.leftImageViewTopConstraint.constant < 0 else {
             self.leftImageViewTopConstraint.constant = -150
             self.centerImageViewTopConstraint.constant = -150
             self.rightImageViewTopConstrainr.constant = -150
+            self.countUserScore()
             self.view.layoutIfNeeded()
             return self.repeatAnimation(mouseSpeed: mouseSpeed)
         }
@@ -213,9 +218,9 @@ class RacingViewController: UIViewController {
     func repeatAnimation(mouseSpeed: Double) {
         moveDownForObstructions(mouseSpeed: mouseSpeed)
     }
-    
 
     func showGameOverVC() {
+        saveLastUserRecord()
         let gameOverVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "gameOver") as! GameOverViewController
         self.navigationController?.pushViewController(gameOverVC, animated: true)
     }
@@ -229,7 +234,6 @@ class RacingViewController: UIViewController {
         }
     }
     
-    
     @IBAction func moveMouseToTheRight(_ sender: Any) {
         UIView.animate(withDuration: 1,  animations: { [weak self] in
             self?.moveMouseImageToRight()
@@ -237,5 +241,4 @@ class RacingViewController: UIViewController {
             self?.moveToRight()
         }
     }
-    
 }

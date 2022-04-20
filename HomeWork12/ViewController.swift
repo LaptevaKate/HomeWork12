@@ -17,19 +17,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-
-    
-    
     @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var userScoreLabel: UILabel!
     
-    @IBOutlet weak var lastRecordLabel: UILabel!
-    
-    
     @IBOutlet weak var userImage: UIImageView!
-    
-    
     
     //MARK: - Properties
     
@@ -40,7 +32,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menuWidth.constant = 0
-        
+
         blurView.isHidden = true
     
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissBlur))
@@ -70,6 +62,11 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
     
+//    func countGames() {
+//        let countGames =
+//        userScoreLabel.text = ("Your played \(countGames) games")
+//    }
+    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -82,7 +79,6 @@ class ViewController: UIViewController {
                                       style: .cancel))
         
         present(alert, animated: true)
-        
     }
     
     //MARK: - IBActions
@@ -97,7 +93,6 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
     
-    
     @IBAction func startGameButton(_ sender: Any) {
         presentPinAlert()
     }
@@ -107,22 +102,23 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
+    @IBAction func showResultsOfGame(_ sender: Any) {
+        let recordOfGamesViewController = self.storyboard?.instantiateViewController(withIdentifier: "recordsVC") as! RecordOfGamesViewController
+        self.navigationController?.pushViewController(recordOfGamesViewController, animated: true)
+        
+    }
     
-
     @IBAction func shareImageView(_ sender: UIButton) {
         let image = UIImage(named: "avatarOne")
         let imageShare = [ image!]
         let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
-     
     }
-    
 }
 
 
 //MARK: - ViewController Extention
-
 extension ViewController {
     func presentPinAlert() {
         let alert = UIAlertController(title: "Pin Question", message: "How many days in a high year?", preferredStyle: .alert)

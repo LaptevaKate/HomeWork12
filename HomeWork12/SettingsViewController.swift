@@ -11,7 +11,6 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     //MARK: - @IBOutlet
-    
     @IBOutlet weak var userNameTextField: UITextField!
     
     @IBOutlet weak var mouseColorPickerView: UIPickerView!
@@ -23,7 +22,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: - Properties
-    
     private let mouseColors = ["Green", "Red", "Blue", "Black"]
     private let obstructionForMoving = ["Cat", "Dog", "Owl"]
     private var mouseColorValue: String?
@@ -31,7 +29,6 @@ class SettingsViewController: UIViewController {
     
     
     //MARK: - ViewDidLoad
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,12 +44,9 @@ class SettingsViewController: UIViewController {
         setupSettings()
         
         registerKeybordNotification()
-        
     }
     
-    
     //MARK: - Methods
-    
     func setupSettings() {
         let savedData = SaveUserSettings.shared
         userNameTextField.text = savedData.userName
@@ -64,7 +58,6 @@ class SettingsViewController: UIViewController {
             obstructionPickerView.selectRow(obstructionValue, inComponent: 0, animated: false)
         }
     }
-    
     
     private func addDoneButtonOnKeyboard(){
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
@@ -79,13 +72,11 @@ class SettingsViewController: UIViewController {
         
         mouseSpeed.inputAccessoryView = doneToolbar
         userNameTextField.inputAccessoryView = doneToolbar
-        
     }
     
     @objc private func doneButtonAction() {
         mouseSpeed.resignFirstResponder()
         userNameTextField.resignFirstResponder()
-        
     }
     
     //MARK: - IBActions
