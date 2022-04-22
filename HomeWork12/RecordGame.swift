@@ -14,4 +14,10 @@ struct RecordGame: Codable, Comparable {
     var userName: String
     var userScore: Int
     var date: Date
+    var stringDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy HH:mm"
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter.string(from: self.date)
+    }
 }

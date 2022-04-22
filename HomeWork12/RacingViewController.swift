@@ -37,6 +37,7 @@ class RacingViewController: UIViewController {
     private var position: Place = .center
     private let userName: String = SaveUserSettings.shared.userName ?? "Unknown user"
     private var userScore = 0
+    var duration: TimeInterval = 25 / (Double(SaveUserSettings.shared.speed) ?? 0)
 
     //MARK: - Override methods
     override func viewDidLoad() {
@@ -66,12 +67,11 @@ class RacingViewController: UIViewController {
                 self.showGameOverVC()
             }
         }
-   
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 90)
+        moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 70)
         setMouseImagePosition(to: .center)
     }
     
@@ -202,13 +202,14 @@ class RacingViewController: UIViewController {
             self.rightImageViewTopConstrainr.constant = -150
             self.countUserScore()
             self.view.layoutIfNeeded()
+            duration = max(0.04, duration * 0.7)
             return self.repeatAnimation(mouseSpeed: mouseSpeed)
         }
-        UIView.animate(withDuration: 25 / mouseSpeed, delay: 0, options: [.curveLinear], animations: { [weak self] in
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
             self.leftImageViewTopConstraint.constant += 30
             self.centerImageViewTopConstraint.constant += 60
-            self.rightImageViewTopConstrainr.constant += 50
+            self.rightImageViewTopConstrainr.constant += 40
             self.view.layoutIfNeeded()
         }, completion: {[weak self] _ in
             self?.repeatAnimation(mouseSpeed: mouseSpeed)
@@ -224,7 +225,6 @@ class RacingViewController: UIViewController {
         let gameOverVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "gameOver") as! GameOverViewController
         self.navigationController?.pushViewController(gameOverVC, animated: true)
     }
-
     //MARK: - IBActions
     @IBAction func moveMouseToTheLeft(_ sender: Any) {
         UIView.animate(withDuration: 1,  animations: { [weak self] in

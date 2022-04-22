@@ -27,16 +27,21 @@ extension RecordOfGamesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         let user = usersScoresArray[indexPath.row]
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy HH:mm"
-        formatter.locale = Locale(identifier: "en_US")
-        let stringDate = formatter.string(from: user.date)
+        let stringDate = user.stringDate
         
         cell.isUserInteractionEnabled = false
-        cell.textLabel?.text = "User name: \(user.userName)\nUser score: \(String(user.userScore))\nDate: \(stringDate)"
-        
+        cell.textLabel?.text =
+        """
+        User name: \(user.userName)
+        User score: \(String(user.userScore))
+        Date: \(stringDate)
+        """
         return cell
     }
 }

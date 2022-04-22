@@ -62,11 +62,6 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
     
-//    func countGames() {
-//        let countGames =
-//        userScoreLabel.text = ("Your played \(countGames) games")
-//    }
-    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -77,7 +72,6 @@ class ViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel",
                                       style: .cancel))
-        
         present(alert, animated: true)
     }
     
@@ -121,7 +115,9 @@ class ViewController: UIViewController {
 //MARK: - ViewController Extention
 extension ViewController {
     func presentPinAlert() {
-        let alert = UIAlertController(title: "Pin Question", message: "How many days in a high year?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Pin Question",
+                                      message: "How many days in a high year?",
+                                      preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Enter value to start the game"
             textField.keyboardType = .decimalPad
@@ -135,15 +131,21 @@ extension ViewController {
                 self.presentAlert(text: "Refresh your knowledge and try again")
             }
         }
-        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "CANCEL",
+                                         style: .cancel,
+                                         handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
     
     func presentAlert(text: String) {
-        let alert = UIAlertController(title: "Result", message: text, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Result",
+                                      message: text,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK",
+                                     style: .default,
+                                     handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }
