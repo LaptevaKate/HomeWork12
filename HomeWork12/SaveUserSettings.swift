@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum SaveKeys: String {
-    case userName, mouseColor, obstruction, speed, userImage
+    case userName, mouseColor, obstruction, speed, userImage, scores
 }
 
 class SaveUserSettings {
@@ -17,7 +17,22 @@ class SaveUserSettings {
     
     public static var shared = SaveUserSettings()
     
-    var usersScores: [String: RecordGame] = [:]
+    var usersScores: [RecordGame] {
+        get {
+            guard let dataArray = defaults.array(forKey: SaveKeys.scores.rawValue) as? [Data] else {return [] }
+            let scores: [RecordGame]
+            do {
+                scores = try dataArray.map { try PropertyListDecoder().decode(RecordGame.self, from: $0) }
+            } catch {
+                scores = []
+            }
+            return scores }
+        set {
+            let dataArray = newValue.map { try? PropertyListEncoder().encode($0) }
+            defaults.setValue(dataArray, forKey: SaveKeys.scores.rawValue)
+        }
+    }
+    
     
     var userName: String? {
         get {
@@ -72,20 +87,7 @@ class SaveUserSettings {
     }
     
     func record(recordGame: RecordGame) {
-        let user = userName ?? "Unknown user"
-        let value = try? PropertyListEncoder().encode(recordGame)
-        defaults.set(value, forKey: user)
-        usersScores[user] = recordGame
-    }
-    
-    func fillUsersScores() {
-        for (key, _) in defaults.dictionaryRepresentation() {
-            if let data = defaults.value(forKey: key) as? Data,
-               let value = try? PropertyListDecoder().decode(RecordGame.self, from: data) {
-                usersScores[key] = value
-            }
-        }
-        print(usersScores)
+     usersScores = usersScores + [recordGame]
     }
 }
 

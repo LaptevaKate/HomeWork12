@@ -11,7 +11,7 @@ class RecordOfGamesViewController: UIViewController {
     //MARK: - @IBOutlet
     @IBOutlet private weak var scoresTableView: UITableView!
     //MARK: - Properties
-    let usersScoresArray: [RecordGame] = SaveUserSettings.shared.usersScores.values.map({$0}).sorted(by: >)
+    let usersScoresArray: [RecordGame] = SaveUserSettings.shared.usersScores.sorted(by: >)
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {

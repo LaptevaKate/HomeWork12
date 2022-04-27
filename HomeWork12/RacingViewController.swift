@@ -37,7 +37,7 @@ class RacingViewController: UIViewController {
     private var position: Place = .center
     private let userName: String = SaveUserSettings.shared.userName ?? "Unknown user"
     private var userScore = 0
-    var duration: TimeInterval = 25 / (Double(SaveUserSettings.shared.speed) ?? 0)
+    private var duration: TimeInterval = 25 / (Double(SaveUserSettings.shared.speed) ?? 70)
 
     //MARK: - Override methods
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ class RacingViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        moveDownForObstructions(mouseSpeed: Double(SaveUserSettings.shared.speed) ?? 70)
+        moveDownForObstructions()
         setMouseImagePosition(to: .center)
     }
     
@@ -195,7 +195,7 @@ class RacingViewController: UIViewController {
         }
     }
     
-    func moveDownForObstructions(mouseSpeed: Double) {
+    func moveDownForObstructions() {
         guard self.viewMainScreenRacing.bounds.contains(self.leftSideObstructionImageView.frame) || self.leftImageViewTopConstraint.constant < 0 else {
             self.leftImageViewTopConstraint.constant = -150
             self.centerImageViewTopConstraint.constant = -150
@@ -203,7 +203,7 @@ class RacingViewController: UIViewController {
             self.countUserScore()
             self.view.layoutIfNeeded()
             duration = max(0.04, duration * 0.7)
-            return self.repeatAnimation(mouseSpeed: mouseSpeed)
+            return self.repeatAnimation()
         }
         UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
@@ -212,12 +212,12 @@ class RacingViewController: UIViewController {
             self.rightImageViewTopConstrainr.constant += 40
             self.view.layoutIfNeeded()
         }, completion: {[weak self] _ in
-            self?.repeatAnimation(mouseSpeed: mouseSpeed)
+            self?.repeatAnimation()
         })
     }
 
-    func repeatAnimation(mouseSpeed: Double) {
-        moveDownForObstructions(mouseSpeed: mouseSpeed)
+    func repeatAnimation() {
+        moveDownForObstructions()
     }
 
     func showGameOverVC() {

@@ -500,7 +500,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-aG-FIS">
-                                        <rect key="frame" x="20" y="35" width="374" height="588"/>
+                                        <rect key="frame" x="24" y="35" width="374" height="588"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiu-kL-WCD">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -628,7 +628,7 @@
                                     <constraint firstItem="Hkq-aG-FIS" firstAttribute="top" secondItem="Eck-40-DYW" secondAttribute="top" constant="35" id="35p-aN-Exp"/>
                                     <constraint firstAttribute="bottom" secondItem="Hkq-aG-FIS" secondAttribute="bottom" id="3Id-FB-QhY"/>
                                     <constraint firstAttribute="trailing" secondItem="Hkq-aG-FIS" secondAttribute="trailing" id="HmP-Nu-0Wf"/>
-                                    <constraint firstItem="Hkq-aG-FIS" firstAttribute="leading" secondItem="Eck-40-DYW" secondAttribute="leading" constant="20" id="ZDv-hH-Gl0"/>
+                                    <constraint firstItem="Hkq-aG-FIS" firstAttribute="leading" secondItem="Eck-40-DYW" secondAttribute="leading" constant="24" id="ZDv-hH-Gl0"/>
                                     <constraint firstItem="Hkq-aG-FIS" firstAttribute="top" secondItem="hMb-Nr-tUp" secondAttribute="top" id="jrc-4W-zKY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="VrD-mf-cW7"/>
