@@ -12,15 +12,10 @@ class ViewController: UIViewController {
     //MARK: - @IBOutlet
     
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var menuContainer: UIView!
-    
     @IBOutlet weak var blurView: UIVisualEffectView!
-    
     @IBOutlet weak var userNameLabel: UILabel!
-    
-    @IBOutlet weak var userScoreLabel: UILabel!
-    
+    @IBOutlet weak var logoScreenImageView: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
     
     //MARK: - Properties
@@ -49,6 +44,16 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         userNameLabel.text = SaveUserSettings.shared.userName ?? "User Name"
         userImage.image = SaveUserSettings.shared.userImage ?? UIImage(systemName: "person.circle")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ParalaxManager.shared.start(view, logoScreenImageView)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ParalaxManager.shared.stop()
     }
     
     //MARK: - Methods

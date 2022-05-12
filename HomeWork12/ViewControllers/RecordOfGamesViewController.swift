@@ -10,6 +10,7 @@ import UIKit
 class RecordOfGamesViewController: UIViewController {
     //MARK: - @IBOutlet
     @IBOutlet private weak var scoresTableView: UITableView!
+    
     //MARK: - Properties
     let usersScoresArray: [RecordGame] = SaveUserSettings.shared.usersScores.sorted(by: >)
     

@@ -12,13 +12,9 @@ class SettingsViewController: UIViewController {
     
     //MARK: - @IBOutlet
     @IBOutlet weak var userNameTextField: UITextField!
-    
     @IBOutlet weak var mouseColorPickerView: UIPickerView!
-    
     @IBOutlet weak var obstructionPickerView: UIPickerView!
-    
     @IBOutlet weak var mouseSpeed: UITextField!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: - Properties

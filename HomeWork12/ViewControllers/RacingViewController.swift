@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreMotion
+
 
 class RacingViewController: UIViewController {
 
@@ -27,6 +29,8 @@ class RacingViewController: UIViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    @IBOutlet weak var accelerometerSwitch: UISwitch!
+    
     //MARK: - Properties
     private enum Place {
         case left
@@ -34,10 +38,13 @@ class RacingViewController: UIViewController {
         case right
     }
     
+    private let motionManager = CMMotionManager()
+    private var isStartAccselerometer: Bool = true
+    
     private var position: Place = .center
     private let userName: String = SaveUserSettings.shared.userName ?? "Unknown user"
     private var userScore = 0
-    private var duration: TimeInterval = 25 / (Double(SaveUserSettings.shared.speed) ?? 70)
+    private var duration: TimeInterval = 35 / (Double(SaveUserSettings.shared.speed) ?? 60)
 
     //MARK: - Override methods
     override func viewDidLoad() {
@@ -68,6 +75,7 @@ class RacingViewController: UIViewController {
             }
         }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -207,8 +215,8 @@ class RacingViewController: UIViewController {
         }
         UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
-            self.leftImageViewTopConstraint.constant += 30
-            self.centerImageViewTopConstraint.constant += 60
+            self.leftImageViewTopConstraint.constant += 25
+            self.centerImageViewTopConstraint.constant += 65
             self.rightImageViewTopConstrainr.constant += 40
             self.view.layoutIfNeeded()
         }, completion: {[weak self] _ in
@@ -220,8 +228,36 @@ class RacingViewController: UIViewController {
         moveDownForObstructions()
     }
 
+    private func moveWithAccelerometer(_ flag: Bool) {
+        if flag {
+            viewForNavigationButtons.isHidden = true
+            if motionManager.isAccelerometerAvailable {
+                motionManager.accelerometerUpdateInterval = 1 / 60
+                motionManager.startAccelerometerUpdates(to: .main) { data, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    if let data = data {
+                        if data.acceleration.x > 0.08 {
+                            self.setMouseImagePosition(to: .right)
+                        }
+                        if data.acceleration.x < -0.08 {
+                            self.setMouseImagePosition(to: .left)
+                        }
+                    }
+                }
+            }
+        } else {
+            viewForNavigationButtons.isHidden = false
+            return
+        }
+    }
+    
+    
     func showGameOverVC() {
         saveLastUserRecord()
+        motionManager.stopAccelerometerUpdates()
         let gameOverVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "gameOver") as! GameOverViewController
         self.navigationController?.pushViewController(gameOverVC, animated: true)
     }
@@ -239,6 +275,16 @@ class RacingViewController: UIViewController {
             self?.moveMouseImageToRight()
         }) { [weak self] _ in
             self?.moveToRight()
+        }
+    }
+    
+    @IBAction func accelerometerSwitchPressed(_ sender: UISwitch) {
+        if sender.isOn {
+            viewForNavigationButtons.isHidden = true
+            moveWithAccelerometer(isStartAccselerometer)
+        } else {
+            viewForNavigationButtons.isHidden = false
+            motionManager.stopAccelerometerUpdates()
         }
     }
 }

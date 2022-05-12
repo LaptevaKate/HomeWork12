@@ -242,6 +242,7 @@
                     <navigationItem key="navigationItem" id="8tp-qv-52z"/>
                     <connections>
                         <outlet property="blurView" destination="miz-u8-lTb" id="huT-sf-1Mb"/>
+                        <outlet property="logoScreenImageView" destination="Ria-aW-9Pk" id="VkO-pb-6Vd"/>
                         <outlet property="menuContainer" destination="Hqj-Ma-whZ" id="mVd-Tm-y5B"/>
                         <outlet property="menuWidth" destination="RWE-et-12h" id="awm-Z1-1iv"/>
                         <outlet property="userImage" destination="tnw-JT-tHi" id="frq-QF-DSj"/>
@@ -313,7 +314,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvD-vw-orc">
-                                <rect key="frame" x="20" y="64" width="374" height="693"/>
+                                <rect key="frame" x="20" y="84" width="374" height="673"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OQd-vI-NzJ">
                                         <rect key="frame" x="35" y="8" width="93.5" height="90"/>
@@ -334,7 +335,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evY-kM-0Xr">
-                                        <rect key="frame" x="131" y="579.5" width="93.5" height="93.5"/>
+                                        <rect key="frame" x="131" y="559.5" width="93.5" height="93.5"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="evY-kM-0Xr" secondAttribute="height" id="tkp-UB-T4t"/>
@@ -359,6 +360,28 @@
                                     <constraint firstItem="2WP-cv-BTS" firstAttribute="width" secondItem="NvD-vw-orc" secondAttribute="width" multiplier="0.25" id="tFL-AI-AA0"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelerometer   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btc-qW-7yn">
+                                <rect key="frame" x="20" y="49" width="305" height="30"/>
+                                <color key="backgroundColor" red="0.58039218189999997" green="0.32941177490000001" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="M7q-qO-Smq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mmL-pP-uHz">
+                                <rect key="frame" x="345" y="49" width="51" height="31"/>
+                                <color key="backgroundColor" red="0.50980395079999996" green="0.27450981740000002" blue="0.67450982329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="accelerometerSwitchPressed:" destination="0DE-vn-kmG" eventType="valueChanged" id="m6f-Ph-NhL"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hXv-PL-1JG"/>
                         <color key="backgroundColor" red="0.63921570780000003" green="0.60000002379999995" blue="0.78431367870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -367,13 +390,19 @@
                             <constraint firstItem="hXv-PL-1JG" firstAttribute="trailing" secondItem="NvD-vw-orc" secondAttribute="trailing" constant="20" id="5Nk-Hu-E83"/>
                             <constraint firstItem="O6w-r6-D5E" firstAttribute="leading" secondItem="hXv-PL-1JG" secondAttribute="leading" constant="100" id="6GI-er-UfB"/>
                             <constraint firstItem="hXv-PL-1JG" firstAttribute="trailing" secondItem="O6w-r6-D5E" secondAttribute="trailing" constant="100" id="979-s9-ABL"/>
+                            <constraint firstItem="mmL-pP-uHz" firstAttribute="leading" secondItem="btc-qW-7yn" secondAttribute="trailing" constant="20" id="D8u-hv-j7k"/>
+                            <constraint firstItem="btc-qW-7yn" firstAttribute="top" secondItem="hXv-PL-1JG" secondAttribute="top" constant="5" id="JXK-DO-FPB"/>
                             <constraint firstItem="O6w-r6-D5E" firstAttribute="top" secondItem="NvD-vw-orc" secondAttribute="bottom" constant="10" id="XtI-YN-6Oj"/>
                             <constraint firstItem="hXv-PL-1JG" firstAttribute="bottom" secondItem="O6w-r6-D5E" secondAttribute="bottom" constant="20" id="oTL-oY-27x"/>
-                            <constraint firstItem="NvD-vw-orc" firstAttribute="top" secondItem="hXv-PL-1JG" secondAttribute="top" constant="20" id="ztr-U6-yXS"/>
+                            <constraint firstItem="mmL-pP-uHz" firstAttribute="top" secondItem="hXv-PL-1JG" secondAttribute="top" constant="5" id="ppN-tg-TFw"/>
+                            <constraint firstItem="btc-qW-7yn" firstAttribute="leading" secondItem="hXv-PL-1JG" secondAttribute="leading" constant="20" id="s4G-Fd-dnC"/>
+                            <constraint firstItem="hXv-PL-1JG" firstAttribute="trailing" secondItem="mmL-pP-uHz" secondAttribute="trailing" constant="20" id="xQb-9A-M3d"/>
+                            <constraint firstItem="NvD-vw-orc" firstAttribute="top" secondItem="hXv-PL-1JG" secondAttribute="top" constant="40" id="ztr-U6-yXS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wBX-C5-r5T"/>
                     <connections>
+                        <outlet property="accelerometerSwitch" destination="mmL-pP-uHz" id="fHr-gp-BLl"/>
                         <outlet property="centerImageViewTopConstraint" destination="Ldj-bp-ecZ" id="PjE-kB-2Bt"/>
                         <outlet property="centerSideObstructionImageView" destination="bUM-ci-RSa" id="0uI-Gc-N2d"/>
                         <outlet property="leftButton" destination="JXb-CP-t7b" id="g5V-2n-rQA"/>
