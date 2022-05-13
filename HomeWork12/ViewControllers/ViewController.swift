@@ -46,16 +46,6 @@ class ViewController: UIViewController {
         userImage.image = SaveUserSettings.shared.userImage ?? UIImage(systemName: "person.circle")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        ParalaxManager.shared.start(view, logoScreenImageView)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ParalaxManager.shared.stop()
-    }
-    
     //MARK: - Methods
     
     @objc private func dismissBlur() {

@@ -18,7 +18,6 @@
 		5E7C087727EE553700C39816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7C087527EE553700C39816 /* LaunchScreen.storyboard */; };
 		5E8C7DF127FEB6FC007DD5F0 /* RacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */; };
 		5E904F88280041E200C19565 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E904F87280041E200C19565 /* GameOverViewController.swift */; };
-		5E9671DA282D26EB004EC211 /* ParalaxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9671D9282D26EB004EC211 /* ParalaxManager.swift */; };
 		5EF6488F280D766A00F7BED3 /* RecordGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF6488E280D766A00F7BED3 /* RecordGame.swift */; };
 		5EF64893280D7C3800F7BED3 /* RecordOfGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF64892280D7C3800F7BED3 /* RecordOfGamesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		5E7C087827EE553700C39816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E8C7DF027FEB6FC007DD5F0 /* RacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingViewController.swift; sourceTree = "<group>"; };
 		5E904F87280041E200C19565 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
-		5E9671D9282D26EB004EC211 /* ParalaxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParalaxManager.swift; sourceTree = "<group>"; };
 		5EF6488E280D766A00F7BED3 /* RecordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGame.swift; sourceTree = "<group>"; };
 		5EF64892280D7C3800F7BED3 /* RecordOfGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOfGamesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +72,6 @@
 			children = (
 				5E7C086A27EE553400C39816 /* AppDelegate.swift */,
 				5E7C086C27EE553400C39816 /* SceneDelegate.swift */,
-				5E9671DB282D26F0004EC211 /* Manager */,
 				5E9671D6282D2609004EC211 /* Model */,
 				5E9671DC282D2964004EC211 /* SaveSettings */,
 				5E9671D8282D2692004EC211 /* View */,
@@ -113,14 +110,6 @@
 				5E7C087027EE553400C39816 /* Main.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		5E9671DB282D26F0004EC211 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				5E9671D9282D26EB004EC211 /* ParalaxManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		5E9671DC282D2964004EC211 /* SaveSettings */ = {
@@ -207,7 +196,6 @@
 				5EF6488F280D766A00F7BED3 /* RecordGame.swift in Sources */,
 				5E7C086F27EE553400C39816 /* ViewController.swift in Sources */,
 				5E75F86627F5D01400DDFC39 /* UserModal.swift in Sources */,
-				5E9671DA282D26EB004EC211 /* ParalaxManager.swift in Sources */,
 				5E7C086B27EE553400C39816 /* AppDelegate.swift in Sources */,
 				5E904F88280041E200C19565 /* GameOverViewController.swift in Sources */,
 				5E7C086D27EE553400C39816 /* SceneDelegate.swift in Sources */,
