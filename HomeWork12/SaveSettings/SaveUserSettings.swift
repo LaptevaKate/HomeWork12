@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseCrashlytics
+import FirebaseAnalytics
 
 enum SaveKeys: String {
     case userName, mouseColor, obstruction, speed, userImage, scores
