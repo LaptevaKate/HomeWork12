@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class SettingsViewController: UIViewController {
@@ -127,7 +128,9 @@ extension SettingsViewController: UITextFieldDelegate {
         
         @objc func willShowKeybord(_ nofication: NSNotification) {
             guard let info = nofication.userInfo,
-                  let keybordSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+                  let keybordSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else {
+                CrashlyticsManager.makeError(reason: .unwrap)
+                return }
             let insets = UIEdgeInsets(top: 0, left: 0, bottom: keybordSize.height, right: 0)
             scrollView.contentInset = insets
             scrollView.scrollIndicatorInsets = insets
@@ -135,7 +138,9 @@ extension SettingsViewController: UITextFieldDelegate {
         
         @objc func willHideKeybord(_ nofication: NSNotification) {
             guard let info = nofication.userInfo,
-                  let _ = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+                  let _ = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else {
+                CrashlyticsManager.makeError(reason: .unwrap)
+                return }
             let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             scrollView.contentInset = insets

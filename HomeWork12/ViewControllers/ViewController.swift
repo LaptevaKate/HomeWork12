@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -84,6 +85,9 @@ class ViewController: UIViewController {
     
     @IBAction func startGameButton(_ sender: Any) {
         presentPinAlert()
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemName: "Start",
+            AnalyticsParameterContentType: "Button"])
     }
     
     @IBAction func settingTapped(_ sender: Any) {
@@ -94,7 +98,6 @@ class ViewController: UIViewController {
     @IBAction func showResultsOfGame(_ sender: Any) {
         let recordOfGamesViewController = self.storyboard?.instantiateViewController(withIdentifier: "recordsVC") as! RecordOfGamesViewController
         self.navigationController?.pushViewController(recordOfGamesViewController, animated: true)
-        
     }
     
     @IBAction func shareImageView(_ sender: UIButton) {

@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreMotion
+import Firebase
+
 
 
 class RacingViewController: UIViewController {
@@ -211,6 +213,7 @@ class RacingViewController: UIViewController {
             self.countUserScore()
             self.view.layoutIfNeeded()
             duration = max(0.04, duration * 0.7)
+            CrashlyticsManager.makeError(reason: .unwrap)
             return self.repeatAnimation()
         }
         UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: { [weak self] in
@@ -233,17 +236,17 @@ class RacingViewController: UIViewController {
             viewForNavigationButtons.isHidden = true
             if motionManager.isAccelerometerAvailable {
                 motionManager.accelerometerUpdateInterval = 1 / 60
-                motionManager.startAccelerometerUpdates(to: .main) { data, error in
+                motionManager.startAccelerometerUpdates(to: .main) { [weak self] data, error in
                     if let error = error {
                         print(error.localizedDescription)
                         return
                     }
                     if let data = data {
                         if data.acceleration.x > 0.08 {
-                            self.setMouseImagePosition(to: .right)
+                            self?.moveToRight()
                         }
                         if data.acceleration.x < -0.08 {
-                            self.setMouseImagePosition(to: .left)
+                            self?.moveToLeft()
                         }
                     }
                 }
@@ -254,9 +257,11 @@ class RacingViewController: UIViewController {
         }
     }
     
-    
     func showGameOverVC() {
         saveLastUserRecord()
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(123)",
+            AnalyticsParameterItemName: "Game Over"])
         motionManager.stopAccelerometerUpdates()
         let gameOverVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "gameOver") as! GameOverViewController
         self.navigationController?.pushViewController(gameOverVC, animated: true)
